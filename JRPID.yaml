@@ -134,6 +134,35 @@ Children:
         name: Button on SmartDashboard, validators: null, value: true}
     Base: Command
     Name: Autonomous Command
+  - Children: []
+    Properties:
+      Parameters: !!robotbuilder.data.properties.ParametersProperty
+        default:
+        - &id002 !!robotbuilder.data.properties.ParameterDescriptor {name: setpoint,
+          type: double}
+        name: Parameters
+        validators: null
+        value:
+        - *id002
+      Requires: !!robotbuilder.data.properties.ComponentSelectionProperty
+        componentName: PID Subsystem
+        default: None
+        name: Requires
+        validators: [TypeDropdownSelected]
+        value: PID Subsystem 1
+      Parameter presets: !!robotbuilder.data.properties.ParameterSetProperty
+        default: &id003
+        - !!robotbuilder.data.properties.ParameterSet
+          name: Half
+          parameters:
+          - {name: setpoint, type: double, value: '0'}
+        name: Parameter presets
+        validators: null
+        value: *id003
+      Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
+        name: Button on SmartDashboard, validators: null, value: true}
+    Base: Setpoint Command
+    Name: Setpoint Command 1
   Properties: {}
   Base: Commands
   Name: Commands
